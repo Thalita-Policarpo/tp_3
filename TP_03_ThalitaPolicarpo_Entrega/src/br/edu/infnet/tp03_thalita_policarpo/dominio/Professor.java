@@ -15,12 +15,15 @@ public class Professor extends Pessoa {
 	    Professor.materia = aMateria;
 	    Professor.salario = oSalario;
 	    Professor.mesContratacao = oMesContratacao;
+	    Professor.getSobrenome();
+    	Professor.getUltimoNome();
+    	Professor.getNomeCompleto(); 
 	}
 	
 	@Override
 	public void imprimir() {
 		for (int i = 0; i <Constante.lista.size(); i++) {
-		    if(Constante.lista.get(i).getCargo() == "professor") {
+		    if(Constante.lista.get(i).cargo == "professor") {
 		    	System.out.println("Nome do profesor: " + oNome);        
 		    	System.out.println("Mes de contratacao: " + oMesContratacao);     
 		    	System.out.println("Salario: R$ " + oSalario);        

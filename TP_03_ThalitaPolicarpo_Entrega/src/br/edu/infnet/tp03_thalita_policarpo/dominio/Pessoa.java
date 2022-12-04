@@ -5,12 +5,10 @@ public class  Pessoa {
 	private static int codigoPessoa;
 	private static StringBuilder nomeCompleto = new StringBuilder();
     private static String nome;
-    private static String sobreNome;
+    private static StringBuilder sobrenome = new StringBuilder();
     private static String ultimoNome;
     private static String cargo;
     private static int identificacao;
-    
-
    
 
 	public Pessoa() {
@@ -18,16 +16,20 @@ public class  Pessoa {
     }
 
     public Pessoa(String nome, String cargo, int aIdentificacao) {
-        this.nome = nome;
+        Pessoa.nome = nome;
         this.cargo = cargo;
         this.identificacao = aIdentificacao;
         
+        
         String[] tokens = this.nome.split(" ");
         this.nome = tokens[0];
-        this.sobreNome = tokens[1-(tokens.length -2)];
-        this.ultimoNome = tokens[tokens.length -1];      
         
-        this.nomeCompleto.append(this.nome).append(this.sobreNome).append(this.ultimoNome);
+        for(int i = 1; i < tokens.length-1; i++) {
+        	this.sobrenome.append(tokens[i]).append(" ");
+        }
+        
+        this.ultimoNome = tokens[tokens.length -1];    
+        this.nomeCompleto.append(this.nome).append(" ").append(this.sobrenome).append(this.ultimoNome);
     }
     
     
@@ -40,9 +42,9 @@ public class  Pessoa {
     public void imprimir() {}
     
     
-    // -----------------------------------------------------------------------
+    //  get -set --------------------------------------------------------------------
     
-    // get -set identificacao
+ // identificacao
     public static int getIdentificacao() {
         return identificacao;
     }
@@ -51,6 +53,7 @@ public class  Pessoa {
         Pessoa.identificacao = identificacao;
     }
     
+// codigoPessoa
     public static int getCodigoPessoa() {
 		return codigoPessoa;
 	}
@@ -59,6 +62,7 @@ public class  Pessoa {
 		Pessoa.codigoPessoa = codigoPessoa;
 	}
 
+//	nome
 	public static String getNome() {
 		return nome;
 	}
@@ -67,12 +71,40 @@ public class  Pessoa {
 		Pessoa.nome = nome;
 	}
 
+//	cargo
 	public static String getCargo() {
 		return cargo;
 	}
 
 	public static void setCargo(String cargo) {
 		Pessoa.cargo = cargo;
+	}
+
+//	nomeCompleto
+	public static StringBuilder getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+	public static void setNomeCompleto(StringBuilder nomeCompleto) {
+		Pessoa.nomeCompleto = nomeCompleto;
+	}
+
+//	sobrenome
+	public static StringBuilder getSobrenome() {
+		return sobrenome;
+	}
+
+	public static void setSobrenome(StringBuilder sobreNome) {
+		Pessoa.sobrenome = sobreNome;
+	}
+
+//	ultimoNome
+	public static String getUltimoNome() {
+		return ultimoNome;
+	}
+
+	public static void setUltimoNome(String ultimoNome) {
+		Pessoa.ultimoNome = ultimoNome;
 	}
 
 }

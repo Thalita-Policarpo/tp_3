@@ -166,7 +166,11 @@ public class TP03_ThalitaPolicarpo {
     					break;				
     				case 3: 
     				    
-    				    consultarSituacao();
+    				   // consultarSituacao();
+    					for (int i = 0; i <Constante.lista.size(); i++) {
+    						System.out.println(Constante.lista.get(i));
+    					}
+    					
     				    break;
     				case 4: 
     				    imprimirTodos();

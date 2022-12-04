@@ -13,12 +13,15 @@ public class Aluno extends Pessoa {
     
     public Aluno() {}
   
-    public Aluno(String oNome, String cargoAluno, int aIdentificacao, float atribuicao1, float atribuicao2) {
+    public Aluno(String oNome, String cargoAluno, int aIdentificacao, float nota1, float nota2) {
         super(oNome, cargoAluno,aIdentificacao);  	
-        Aluno.av1 = atribuicao1;
-        Aluno.av2 = atribuicao2;
+        Aluno.av1 = nota1;
+        Aluno.av2 = nota2;
         Aluno.media = mediaAluno(Aluno.av1, Aluno.av2);
     	Aluno.status = status(Aluno.media);
+    	Aluno.getSobrenome();
+    	Aluno.getUltimoNome();
+    	Aluno.getNomeCompleto();  	
     }
     
 
