@@ -6,8 +6,9 @@ import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante;
 import br.edu.infnet.tp03_thalita_policarpo.exceptions.*;
 
 
-public class Aluno extends Pessoa {
-	private Pessoa alunos = new Pessoa();
+public class Aluno extends Pessoa1 {
+	private Pessoa1 alunos = new Pessoa1();
+	private static Scanner ler = new Scanner(System.in);
 
 	
 	
@@ -44,15 +45,13 @@ public class Aluno extends Pessoa {
 					alunos.identificacao = codigoPessoa;
 					
 					System.out.println("Informe o nome do aluno:");
-					alunos.nome[1] = in.next();
-					alunos.nome[2] = in.next();
-					alunos.nome[3] = in.next();
-					
-				    System.out.println("Informe a nota da Avaliacao 1:");
-				    alunos.av1 = in.nextFloat();
+					alunos.nome = ler.nextLine();
+
+				    System.out.println(" Informe a nota da Avaliacao 1:");
+				    alunos.av1 = ler.nextFloat();
 
 					System.out.println("Informe a nota da Avaliacao 2:");
-					alunos.av2 = in.nextFloat();
+					alunos.av2 = ler.nextFloat();
 
 					
 					if (alunos.av1 < 0 || alunos.av1 > 10 || alunos.av2 < 0 || alunos.av2 > 10) {
@@ -72,7 +71,7 @@ public class Aluno extends Pessoa {
 	        System.err.println("A nota precisa ser um numero!");  
 	        
 	    }finally {
-            in.nextLine();   
+            ler.nextLine();   
         }
 	}
 
@@ -99,10 +98,10 @@ public class Aluno extends Pessoa {
 				
 		do {
 			System.out.println("Informe o codigo de consulta:");
-			int codigoConsulta = in.nextInt();
+			int codigoConsulta = ler.nextInt();
 						
 			if(pessoas[codigoConsulta].cargo == "aluno" && codigoConsulta >=0 && codigoConsulta < codigoPessoa ) {
-				System.out.println("Nome do aluno: " + pessoas[codigoConsulta].nome[1] + " " + pessoas[codigoConsulta].nome[2] + " " +pessoas[codigoConsulta].nome[3]);		
+				System.out.println("Nome do aluno: " + pessoas[codigoConsulta].nome);		
 				System.out.println("Nota da AV1: " + pessoas[codigoConsulta].av1);		
 				System.out.println("Nota da AV2: " + pessoas[codigoConsulta].av2);		
 				System.out.println("Media final: " + media(codigoConsulta));		
@@ -123,7 +122,7 @@ public class Aluno extends Pessoa {
 	public void consultarTodos() {
 		for (int i = 0; i < codigoPessoa; i++) {
 			if(pessoas[i].cargo == "aluno"){
-				System.out.println("Nome do aluno: " + pessoas[i].nome[1] + " " + pessoas[i].nome[2] + " " +pessoas[i].nome[3]);		
+				System.out.println("Nome do aluno: " + pessoas[i].nome);		
 				System.out.println("Nota da AV1: " + pessoas[i].av1);		
 				System.out.println("Nota da AV2: " + pessoas[i].av2);		
 				System.out.println("Media final: " + media(i));	
@@ -140,7 +139,7 @@ public class Aluno extends Pessoa {
 			exibirMenu();
 			
 			System.out.println("Esolha uma opcao: ");
-			opcao = in.nextInt();
+			opcao = ler.nextInt();
 
 			switch (opcao) {
 			case 1:    

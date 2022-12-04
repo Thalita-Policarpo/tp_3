@@ -29,15 +29,20 @@ public class TP03_ThalitaPolicarpo {
                 tipoPessoa= "aluno";
                                 
                 System.out.println("Informe o nome do aluno:");
-                nomePessoa = in.next();
+                nomePessoa = in.nextLine();
                 
                 System.out.println("Informe a nota da Avaliacao 1:");
                 atribuicaoTipoFloat_1 = in.nextFloat();
+
+                if (atribuicaoTipoFloat_1 < 0 || atribuicaoTipoFloat_1 > 10 ) {
+                	throw new NotaInvalidaException();
+                }
+                
                 System.out.println("Informe a nota da Avaliacao 2:");
                 atribuicaoTipoFloat_2 = in.nextFloat();
-                
-                if (atribuicaoTipoFloat_1 < 0 || atribuicaoTipoFloat_1 > 10 || atribuicaoTipoFloat_2 < 0 || atribuicaoTipoFloat_2 > 10) {
-                    throw new NotaInvalidaException();
+                                	
+            	if ( atribuicaoTipoFloat_2 < 0 || atribuicaoTipoFloat_2 > 10) {
+                    
                 }
                 
                 System.out.println("Aluno cadastrado com sucesso!");    
@@ -105,23 +110,23 @@ public class TP03_ThalitaPolicarpo {
     	    
     	    if(codigoConsulta >=0 && codigoConsulta < Pessoa.getCodigoPessoa()) {
     	       
-        	    if(Constante.pessoas[codigoConsulta].cargo == "aluno") {
+        	    if(Constante.lista[codigoConsulta].Pessoa.getNome() == "aluno") {
         	        
-                    System.out.println("Nome do aluno: " + Constante.pessoas[codigoConsulta].nome);    
-                    System.out.println("Nota da AV1: " + Constante.pessoas[codigoConsulta].nota1);      
-                    System.out.println("Nota da AV2: " + Constante.pessoas[codigoConsulta].nota2);      
-                    System.out.println("Media final: " + Constante.pessoas[codigoConsulta].aMedia);        
-                    System.out.println("Situacao: " + Constante.pessoas[codigoConsulta].oStatus);                  
+                    System.out.println("Nome do aluno: " + Constante.lista[codigoConsulta].Pessoa.getNome());    
+                    System.out.println("Nota da AV1: " + Constante.lista[codigoConsulta].getAv1());      
+                    System.out.println("Nota da AV2: " + Constante.lista[codigoConsulta].nota2);      
+                    System.out.println("Media final: " + Constante.lista[codigoConsulta].aMedia);        
+                    System.out.println("Situacao: " + Constante.lista[codigoConsulta].oStatus);                  
                     System.out.println("Identificacao: " );                 
                     System.out.println(" ");
         	
         	    }else { 
         	        
-                    System.out.println("Nome do profesor: " + Constante.pessoas[codigoConsulta].oNome);        
-                    System.out.println("Mes de contratacao: " + Constante.pessoas[codigoConsulta].oMesContratacao);     
-                    System.out.println("Salario: R$ " + Constante.pessoas[codigoConsulta].oSalario);        
-                    System.out.println("Materia: " + Constante.pessoas[codigoConsulta].aMateria);
-                    System.out.println("Identificacao: " +  Constante.pessoas[codigoConsulta].aIdentificacao);
+                    System.out.println("Nome do profesor: " + Constante.lista[codigoConsulta].oNome);        
+                    System.out.println("Mes de contratacao: " + Constante.lista[codigoConsulta].oMesContratacao);     
+                    System.out.println("Salario: R$ " + Constante.lista[codigoConsulta].oSalario);        
+                    System.out.println("Materia: " + Constante.lista[codigoConsulta].aMateria);
+                    System.out.println("Identificacao: " +  Constante.lista[codigoConsulta].aIdentificacao);
                     System.out.println(" ");
         	    }
     	    }else {
@@ -131,28 +136,13 @@ public class TP03_ThalitaPolicarpo {
 	}
     
     public static void imprimirTodos() {
-        
-        for (int i = 0; i <Constante.lista.size(); i++) { 
-        	
-        	
-            if(Constante.lista.get(i).getCargo() == "aluno") {
-                System.out.println("Nome do aluno: " + Constante.lista.get(i).getNome());    
-                System.out.println("Nota da AV1: " + Constante.lista.get(i).al.getAv1());      
-                System.out.println("Nota da AV2: " + Constante.lista.get(i).getAv2());      
-                System.out.println("Media final: " + Constante.lista.get(i).getMedia());        
-                System.out.println("Situacao: " + Constante.lista.get(i).getStatus());                  
-                System.out.println("Identificacao: " );                 
-                System.out.println(" ");
-        
-            }else if(Constante.pessoas[i].cargo == "progessor"){  
-                System.out.println("Nome do profesor: " + Constante.pessoas[i].oNome);        
-                System.out.println("Mes de contratacao: " + Constante.pessoas[i].oMesContratacao);     
-                System.out.println("Salario: R$ " + Constante.pessoas[i].oSalario);        
-                System.out.println("Materia: " + Constante.pessoas[i].aMateria);
-                System.out.println("Identificacao: " +  Constante.pessoas[i].aIdentificacao);
-                System.out.println(" ");
-            }
-        }
+                  	    	
+            	Aluno aluno = new Aluno();
+    			aluno.imprimir();	
+                    	
+            	Professor professor = new Professor();
+    			professor.imprimir();	
+
 	}
 
     public static void main(String[] args){

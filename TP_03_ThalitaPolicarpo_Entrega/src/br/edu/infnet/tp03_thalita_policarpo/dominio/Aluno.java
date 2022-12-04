@@ -1,5 +1,9 @@
 package br.edu.infnet.tp03_thalita_policarpo.dominio;
 
+import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante;
+import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Menus;
+import br.edu.infnet.tp03_thalita_policarpo.dominio.Pessoa;
+
 
 public class Aluno extends Pessoa {
     private static float av1;
@@ -8,18 +12,13 @@ public class Aluno extends Pessoa {
     private static String status;
     
     public Aluno() {}
-    
-    
-       
+  
     public Aluno(String oNome, String cargoAluno, int aIdentificacao, float atribuicao1, float atribuicao2) {
-          	
-        Aluno al = new Aluno();
-        al.setNome(oNome);
-        al.setCargo(cargoAluno);
-        al.setIdentificacao(aIdentificacao);
-        al.av1 = atribuicao1;
-        al.av2 = atribuicao2;
-        
+        super(oNome, cargoAluno,aIdentificacao);  	
+        Aluno.av1 = atribuicao1;
+        Aluno.av2 = atribuicao2;
+        Aluno.media = mediaAluno(Aluno.av1, Aluno.av2);
+    	Aluno.status = status(Aluno.media);
     }
     
 
@@ -29,32 +28,36 @@ public class Aluno extends Pessoa {
 
 
 
-	public float mediaAluno() {
-        return (Aluno.av1 + Aluno.av2) / 2;
+	public float mediaAluno(float nota1, float nota2) {
+        return (nota1 + nota2) / 2;
     }
     
     
-    public static String status() {   
-        if(media >= 4 && media < 7) {
+    public static String status(float aMedia) {   
+        if(aMedia >= 4 && aMedia < 7) {
             return status = "Prova final";           
-        }else if (media >= 7) {
+        }else if (aMedia >= 7) {
             return status = "Aprovado";
         }
         return status = "Reprovado";
     }
     
-    
-    public void dadosAluno() {
-    	Aluno.media = mediaAluno();
-    	Aluno.status = status();
-    	
-    	
-    	System.out.println( "Nome do aluno: " +
-			    			"\n Nota AV1: "+ av1 +
-			    			"\n Nota AV2: "+ av2 +
-			    			"\n MediaFinal: " + media +
-			    			"\n Situacao: " + status);
+    @Override
+    public void imprimir() {
+    	for (int i = 0; i <Constante.lista.size(); i++) {
+		    if(Constante.lista.get(i).getCargo() == "aluno") {
+        	        
+	            System.out.println("Nome do aluno: " + Constante.lista.get(codigoConsulta).getNome() +    
+	            "\n Nota da AV1: " + Constante.lista.get(codigoConsulta).Aluno.getAv1() +      
+	            "\n Nota da AV2: " + Constante.lista[codigoConsulta].getAv2() +      
+	            "\n Media final: " + Constante.lista[codigoConsulta].getMedia() +        
+	            "\n Situacao: " + Constante.lista[codigoConsulta].getStatus() +                  
+	            "\n Identificacao: " +                 
+	            "\n  ");
+		    }
+    	}
     }
+
     
 @Override
 public String toString() {

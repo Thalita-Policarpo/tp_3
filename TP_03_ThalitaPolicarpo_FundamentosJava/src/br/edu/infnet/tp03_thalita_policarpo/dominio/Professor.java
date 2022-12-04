@@ -1,10 +1,13 @@
 package br.edu.infnet.tp03_thalita_policarpo.dominio;
 import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante;
 
 
-public class Professor extends Pessoa {
-	private Pessoa profs = new Pessoa();
+public class Professor extends Pessoa1 {
+	private Pessoa1 profs = new Pessoa1();
+	private static Scanner ler = new Scanner(System.in);
 
 
 	
@@ -37,18 +40,16 @@ public class Professor extends Pessoa {
 				profs.identificacao = codigoPessoa;
 				
 				System.out.println("Informe o nome do professor:");
-				profs.nome[1] = in.next();
-                profs.nome[2] = in.next();
-                profs.nome[3] = in.next();
+				profs.nome = ler.next();
 				
 				System.out.println("Informe o mes de contratacao:");
-				profs.mesContratacao = in.next();
+				profs.mesContratacao = ler.next();
 				
 				System.out.println("Informe o salario:");
-				profs.salario = in.nextFloat();
+				profs.salario = ler.nextFloat();
 				
 				System.out.println("Informe a materia:");
-				profs.materia = in.next();
+				profs.materia = ler.next();
 
 				System.out.println("Professor cadastrado com sucesso!");	
 				System.out.println("codigo de consulta: " + codigoPessoa);
@@ -63,7 +64,7 @@ public class Professor extends Pessoa {
 		    System.err.println("O salario precisa ser um numero!");
 		    
         }finally {
-            in.nextLine();   
+            ler.nextLine();   
         }
 	}
 	
@@ -71,10 +72,10 @@ public class Professor extends Pessoa {
 	public void consultarUm() {
 		do {
 			System.out.println("Informe o codigo de consulta:");
-			int codigoConsulta = in.nextInt();
+			int codigoConsulta = ler.nextInt();
 						
 			if(pessoas[codigoConsulta].cargo == "professor" &&codigoConsulta >=0 && codigoConsulta < codigoPessoa ) {
-				System.out.println("Nome do professor: " + pessoas[codigoConsulta].nome[1] + " " + pessoas[codigoConsulta].nome[2] + " " +pessoas[codigoConsulta].nome[3]);		
+				System.out.println("Nome do professor: " + pessoas[codigoConsulta].nome);		
 				System.out.println("Mes de contratacao: " + pessoas[codigoConsulta].mesContratacao);		
 				System.out.println("Salario: R$" + pessoas[codigoConsulta].salario);		
 				System.out.println("materia: " + pessoas[codigoConsulta].materia );	
@@ -94,7 +95,7 @@ public class Professor extends Pessoa {
 	public void consultarTodos() {
 		for (int i = 0; i < codigoPessoa; i++) {
 			if(pessoas[i].cargo == "professor") {
-				System.out.println("Nome do profesor: " + pessoas[i].nome[1] + " " + pessoas[i].nome[2] + " " +pessoas[i].nome[3]);		
+				System.out.println("Nome do profesor: " + pessoas[i].nome);		
 				System.out.println("Mes de contratacao: " + pessoas[i].mesContratacao);		
 				System.out.println("Salario: R$ " + pessoas[i].salario);		
 				System.out.println("Materia: " + pessoas[i].materia);
@@ -109,7 +110,7 @@ public class Professor extends Pessoa {
 			exibirMenu();
 			
 			System.out.println("Esolha uma opcao: ");
-			opcao = in.nextInt();
+			opcao = ler.nextInt();
 
 			switch (opcao) {
 			case 1: 

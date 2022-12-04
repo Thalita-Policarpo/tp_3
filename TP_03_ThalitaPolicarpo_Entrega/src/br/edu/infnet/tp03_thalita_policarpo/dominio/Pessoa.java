@@ -27,6 +27,9 @@ public class  Pessoa {
     }
     
     
+    public void imprimir() {}
+    
+    
     // -----------------------------------------------------------------------
     
     // get -set identificacao

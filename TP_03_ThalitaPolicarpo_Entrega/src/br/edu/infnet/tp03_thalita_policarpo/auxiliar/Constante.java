@@ -8,8 +8,9 @@ public class Constante {
 	
 	public final static int TAMANHO = 100;
 	
-	public static ArrayList <Pessoa> lista = new ArrayList();
-   
-    
-    
+	public static ArrayList <Pessoa> lista = new ArrayList<>();
+
+
+	
 }
+  

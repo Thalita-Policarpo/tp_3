@@ -6,12 +6,14 @@ import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante;
 import br.edu.infnet.tp03_thalita_policarpo.exceptions.PrincipalException;
 
 
-public class Pessoa {
-	protected static Scanner in = new Scanner(System.in);
-	protected static Pessoa[] pessoas = new Pessoa[Constante.TAMANHO];
+public class Pessoa1 {
+	protected static Scanner ler = new Scanner(System.in);
+	protected static Pessoa1[] pessoas = new Pessoa1[Constante.TAMANHO];
 	protected static int codigoPessoa = 0;
 	protected static int opcao = 0;
-	protected String[] nome = new String[10];
+	protected StringBuilder nomeCompleto = new StringBuilder();
+	protected String nome;
+	protected String sobreNome;
 	protected String ultimoNome;
 	protected String cargo;
 	protected int identificacao;
@@ -23,10 +25,10 @@ public class Pessoa {
 	
 	
 	public String toString() {
-		return codigoPessoa + opcao + nome[10] + cargo;
+		return codigoPessoa + opcao + nome + sobreNome + ultimoNome + cargo;
 	}
 	
-	public Pessoa() {} 
+	public Pessoa1() {} 
 	
 	public static void consultarAlunosProfessores() {
 		
@@ -64,21 +66,21 @@ public class Pessoa {
 		System.out.println("Gostaria de realizar um novo cadastro?");
 		System.out.println("[1] Sim");
 		System.out.println("[2] Nao");
-		opcao = in.nextInt();
+		opcao = ler.nextInt();
 	}
 	
 	public void perguntarNovaConsulta() {
 		System.out.println("Gostaria de realizar uma nova consulta?");
 		System.out.println("[1] Sim");
 		System.out.println("[2] Nao");
-		opcao = in.nextInt();
+		opcao = ler.nextInt();
 	}
 	
 	public void informarCodigoInexistente() {
 		System.out.println("Codigo inexistente");
 		System.out.println("[1] informar outro codigo");
 		System.out.println("[2] retornar ao menu");
-		opcao = in.nextInt();	
+		opcao = ler.nextInt();	
 	}
 	
 	public void opcaoInvalida() {

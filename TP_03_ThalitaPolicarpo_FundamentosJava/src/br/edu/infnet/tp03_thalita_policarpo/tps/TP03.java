@@ -1,7 +1,7 @@
 package br.edu.infnet.tp03_thalita_policarpo.tps;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import  br.edu.infnet.tp03_thalita_policarpo.dominio.Pessoa;
+import  br.edu.infnet.tp03_thalita_policarpo.dominio.Pessoa1;
 import br.edu.infnet.tp03_thalita_policarpo.dominio.Professor;
 import br.edu.infnet.tp03_thalita_policarpo.dominio.Aluno;
 
@@ -17,7 +17,7 @@ public class TP03 {
 		    try {
 				
 			        
-			        Pessoa pessoa = new Pessoa();
+			        Pessoa1 pessoa = new Pessoa1();
 			        pessoa.exibirMenu();
 			        
 			        System.out.println("Esolha uma opcao: "); 
@@ -35,7 +35,7 @@ public class TP03 {
     					break;
     									
     				case 3: 
-    					Pessoa.consultarAlunosProfessores();
+    					Pessoa1.consultarAlunosProfessores();
     					break;
     
     				case 4: 
