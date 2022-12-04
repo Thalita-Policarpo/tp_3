@@ -6,7 +6,7 @@ import br.edu.infnet.tp03_thalita_policarpo.dominio.Professor;
 import br.edu.infnet.tp03_thalita_policarpo.dominio.Aluno;
 
 public class TP03 {
-	protected static Scanner in = new Scanner(System.in);
+	private static Scanner in = new Scanner(System.in);
 	private static int opcao = 0;
 
 	

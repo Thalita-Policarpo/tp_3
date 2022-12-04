@@ -3,7 +3,10 @@ package br.edu.infnet.tp03_thalita_policarpo.dominio;
 
 public class  Pessoa {
 	private static int codigoPessoa;
+	private static StringBuilder nomeCompleto = new StringBuilder();
     private static String nome;
+    private static String sobreNome;
+    private static String ultimoNome;
     private static String cargo;
     private static int identificacao;
     
@@ -15,9 +18,16 @@ public class  Pessoa {
     }
 
     public Pessoa(String nome, String cargo, int aIdentificacao) {
-        Pessoa.nome = nome;
-        Pessoa.cargo = cargo;
-        Pessoa.identificacao = aIdentificacao;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.identificacao = aIdentificacao;
+        
+        String[] tokens = this.nome.split(" ");
+        this.nome = tokens[0];
+        this.sobreNome = tokens[1-(tokens.length -2)];
+        this.ultimoNome = tokens[tokens.length -1];      
+        
+        this.nomeCompleto.append(this.nome).append(this.sobreNome).append(this.ultimoNome);
     }
     
     

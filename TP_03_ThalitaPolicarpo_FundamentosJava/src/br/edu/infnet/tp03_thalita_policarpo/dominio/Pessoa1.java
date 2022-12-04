@@ -7,13 +7,13 @@ import br.edu.infnet.tp03_thalita_policarpo.exceptions.PrincipalException;
 
 
 public class Pessoa1 {
-	protected static Scanner ler = new Scanner(System.in);
+	private static Scanner ler = new Scanner(System.in);
 	protected static Pessoa1[] pessoas = new Pessoa1[Constante.TAMANHO];
 	protected static int codigoPessoa = 0;
 	protected static int opcao = 0;
 	protected StringBuilder nomeCompleto = new StringBuilder();
-	protected String nome;
-	protected String sobreNome;
+	protected static String nome;
+	protected StringBuilder sobreNome = new StringBuilder();
 	protected String ultimoNome;
 	protected String cargo;
 	protected int identificacao;
@@ -30,6 +30,7 @@ public class Pessoa1 {
 	
 	public Pessoa1() {} 
 	
+		
 	public static void consultarAlunosProfessores() {
 		
 		Aluno aluno = new Aluno();
@@ -49,7 +50,7 @@ public class Pessoa1 {
 	
 	public void executar() throws PrincipalException {}
 	
-	public void registrar() throws PrincipalException {}
+	public void registrar() throws PrincipalException{}
 	
 	public void consultarUm() {}
 
