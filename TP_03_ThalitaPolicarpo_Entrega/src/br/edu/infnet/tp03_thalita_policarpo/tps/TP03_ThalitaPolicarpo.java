@@ -10,7 +10,7 @@ import br.edu.infnet.tp03_thalita_policarpo.exceptions.NotaInvalidaException;
 
 public class TP03_ThalitaPolicarpo {
     
-    protected static Scanner in = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
     private static String tipoPessoa;
     private static String nomePessoa;
     private static float atribuicaoTipoFloat_1;
@@ -42,7 +42,7 @@ public class TP03_ThalitaPolicarpo {
                 atribuicaoTipoFloat_2 = in.nextFloat();
                                 	
             	if ( atribuicaoTipoFloat_2 < 0 || atribuicaoTipoFloat_2 > 10) {
-                    
+            		throw new NotaInvalidaException();
                 }
                 
                 System.out.println("Aluno cadastrado com sucesso!");    
@@ -63,7 +63,7 @@ public class TP03_ThalitaPolicarpo {
     }
   
     public static void registrarProfessor() {
-//        try {
+        try {
             if(Pessoa.getCodigoPessoa() >= Constante.TAMANHO) {
                                 
                 Menus.informarLimiteDeCadastro();
@@ -73,18 +73,19 @@ public class TP03_ThalitaPolicarpo {
                 tipoPessoa= "professor";
                                 
                 System.out.println("Informe o nome do professor:");
-                nomePessoa = in.next();
+                nomePessoa = in.nextLine();
                 
                 System.out.println("Informe o mes de contratacao:");
-                atribuicaoTipoString_3 = in.next();
+                atribuicaoTipoString_3 = in.nextLine();
                 
                 System.out.println("Informe o salario:");
                 atribuicaoTipoFloat_2 = in.nextFloat();
 
                 System.out.println("Informe a materia:");
-                atribuicaoTipoFloat_1 = in.nextFloat();
+                atribuicaoTipoString_4 = in.next();
                 
-                System.out.println("Aluno cadastrado com sucesso!");    
+                
+                System.out.println("Professor cadastrado com sucesso!");    
                 System.out.println("codigo de consulta: " + Pessoa.getCodigoPessoa());
                 System.out.println(" ");
                  
@@ -92,13 +93,13 @@ public class TP03_ThalitaPolicarpo {
                 Pessoa.setCodigoPessoa(Pessoa.getCodigoPessoa() + 1);
                 
                 Constante.lista.add(profs);
-    // erro ésta entrando no catch mesmo sem errar o salario            
+           
             } 
-//        }catch (InputMismatchException exception2 ) {
-//            System.err.println("O salario precisa ser um numero"); 
-//        }finally {
-//            in.nextLine();   
-//        }
+        }catch (InputMismatchException exception2 ) {
+            System.err.println("O salario precisa ser um numero"); 
+        }finally {
+            in.nextLine();   
+        }
     }
     
     
