@@ -15,21 +15,30 @@ public class Professor extends Pessoa {
 	    Professor.materia = aMateria;
 	    Professor.salario = oSalario;
 	    Professor.mesContratacao = oMesContratacao;
-	    Professor.getSobrenome();
-    	Professor.getUltimoNome();
-    	Professor.getNomeCompleto(); 
+	    
+//	    String[] tokens = getNome().split(" ");
+//        Professor.setNome(tokens[0]);
+//        
+//        for(int i = 1; i < tokens.length-1; i++) {
+//        	Professor.setSobrenome(getSobrenome().append(tokens[i]).append(" "));
+//        }
+//        
+//       Professor.setUltimoNome(tokens[tokens.length -1]);   
+//       Professor.setNomeCompleto(getNomeCompleto().append(Professor.getNome()).append(" ").append(Professor.getSobrenome()).append(Professor.getUltimoNome()));
+       
+       
 	}
 	
 	@Override
 	public void imprimir() {
 		for (int i = 0; i <Constante.lista.size(); i++) {
 		    if(Constante.lista.get(i).cargo == "professor") {
-		    	System.out.println("Nome do profesor: " + oNome);        
-		    	System.out.println("Mes de contratacao: " + oMesContratacao);     
-		    	System.out.println("Salario: R$ " + oSalario);        
-		    	System.out.println("Materia: " + aMateria);
-		    	System.out.println("Identificacao: " +  aIdentificacao);
-		    	System.out.println(" ");
+		    	System.out.println( "Nome do profesor: " + oNome 
+		    					+"\n Mes de contratacao: " + oMesContratacao 
+		    					+"\n Salario: R$ " + oSalario 
+		    					+"\n Materia: " + aMateria 
+		    					+"\n Identificacao: " +  aIdentificacao 
+		    					+"\n");
 		    }	
 	    }
 	}
@@ -37,7 +46,7 @@ public class Professor extends Pessoa {
 	
 	@Override
 	public String toString() {
-	    return super.toString() +"Mes de contratacao: " + mesContratacao + "Materia: " + materia + "Salario: R$" + salario;
+	    return super.toString() +"\nMes de contratacao: " + mesContratacao + "\nMateria: " + materia + "\nSalario: R$" + salario +"\n";
 	}
 
 	public static String getMateria() {

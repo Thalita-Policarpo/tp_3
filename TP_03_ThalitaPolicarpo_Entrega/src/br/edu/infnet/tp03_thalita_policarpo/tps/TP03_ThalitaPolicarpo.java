@@ -90,9 +90,9 @@ public class TP03_ThalitaPolicarpo {
                 System.out.println(" ");
                  
                 Professor profs = new Professor(nomePessoa, tipoPessoa, Pessoa.getCodigoPessoa(),  atribuicaoTipoString_4, atribuicaoTipoFloat_2, atribuicaoTipoString_3);
-                Pessoa.setCodigoPessoa(Pessoa.getCodigoPessoa() + 1);
-                
                 Constante.lista.add(profs);
+                
+                Pessoa.setCodigoPessoa(Pessoa.getCodigoPessoa() + 1);
            
             } 
         }catch (InputMismatchException exception2 ) {
@@ -106,33 +106,38 @@ public class TP03_ThalitaPolicarpo {
     
 	public static void consultarSituacao() {
 	    do {
-    	    System.out.println("Informe o código de consulta: ");
-    	    int codigoConsulta = in.nextInt();
-    	    
-    	    if(codigoConsulta >=0 && codigoConsulta < Pessoa.getCodigoPessoa()) {
-    	       
-        	    if(Constante.lista[codigoConsulta].Pessoa.getNome() == "aluno") {
-        	        
-                    System.out.println("Nome do aluno: " + Constante.lista[codigoConsulta].Pessoa.getNome());    
-                    System.out.println("Nota da AV1: " + Constante.lista[codigoConsulta].getAv1());      
-                    System.out.println("Nota da AV2: " + Constante.lista[codigoConsulta].nota2);      
-                    System.out.println("Media final: " + Constante.lista[codigoConsulta].aMedia);        
-                    System.out.println("Situacao: " + Constante.lista[codigoConsulta].oStatus);                  
-                    System.out.println("Identificacao: " );                 
-                    System.out.println(" ");
-        	
-        	    }else { 
-        	        
-                    System.out.println("Nome do profesor: " + Constante.lista[codigoConsulta].oNome);        
-                    System.out.println("Mes de contratacao: " + Constante.lista[codigoConsulta].oMesContratacao);     
-                    System.out.println("Salario: R$ " + Constante.lista[codigoConsulta].oSalario);        
-                    System.out.println("Materia: " + Constante.lista[codigoConsulta].aMateria);
-                    System.out.println("Identificacao: " +  Constante.lista[codigoConsulta].aIdentificacao);
-                    System.out.println(" ");
-        	    }
-    	    }else {
-    	        Menus.informarCodigoInexistente();
-    	    }    
+	    	try {
+	    	    System.out.println("Informe o código de consulta: ");
+	    	    int codigoConsulta = in.nextInt();
+	    	    
+	    	    if(codigoConsulta >=0 && codigoConsulta < Pessoa.getCodigoPessoa()) {
+	    	       
+	        	    if(Constante.lista[codigoConsulta].Pessoa.getNome() == "aluno") {
+	        	        
+	                    System.out.println("Nome do aluno: " + Constante.lista[codigoConsulta].Pessoa.getNome());    
+	                    System.out.println("Nota da AV1: " + Constante.lista[codigoConsulta].getAv1());      
+	                    System.out.println("Nota da AV2: " + Constante.lista[codigoConsulta].nota2);      
+	                    System.out.println("Media final: " + Constante.lista[codigoConsulta].aMedia);        
+	                    System.out.println("Situacao: " + Constante.lista[codigoConsulta].oStatus);                  
+	                    System.out.println("Identificacao: " );                 
+	                    System.out.println(" ");
+	        	
+	        	    }else { 
+	        	        
+	                    System.out.println("Nome do profesor: " + Constante.lista[codigoConsulta].oNome);        
+	                    System.out.println("Mes de contratacao: " + Constante.lista[codigoConsulta].oMesContratacao);     
+	                    System.out.println("Salario: R$ " + Constante.lista[codigoConsulta].oSalario);        
+	                    System.out.println("Materia: " + Constante.lista[codigoConsulta].aMateria);
+	                    System.out.println("Identificacao: " +  Constante.lista[codigoConsulta].aIdentificacao);
+	                    System.out.println(" ");
+	        	    }
+	    	    }else {
+	    	        Menus.informarCodigoInexistente();
+	    	    } 
+	    	}catch (NullPointerException exception1){
+		        System.err.println("ainda nao ha cadastros!");
+		        		        
+		    }
 	    }while (Menus.getOpcao() != 2);
 	}
     
@@ -166,10 +171,10 @@ public class TP03_ThalitaPolicarpo {
     					break;				
     				case 3: 
     				    
-    				   // consultarSituacao();
-    					for (int i = 0; i <Constante.lista.size(); i++) {
-    						System.out.println(Constante.lista.get(i));
-    					}
+    				    consultarSituacao();
+//    					for (int i = 0; i <Constante.lista.size(); i++) {
+//    						System.out.println(Constante.lista);
+//    					}
     					
     				    break;
     				case 4: 

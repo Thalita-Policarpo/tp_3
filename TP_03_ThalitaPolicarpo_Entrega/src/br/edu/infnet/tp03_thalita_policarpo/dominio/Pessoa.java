@@ -35,7 +35,7 @@ public class  Pessoa {
     
     @Override
     public String toString() {
-        return "nome: " + nome + "cargo: " + cargo + "identificacao: " + identificacao;
+        return "Nome: " + nomeCompleto + "\nCargo: " + cargo + "\nIdentificacao: " + identificacao;
     }
     
     

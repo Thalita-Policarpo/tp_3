@@ -19,17 +19,18 @@ public class Aluno extends Pessoa {
         Aluno.av2 = nota2;
         Aluno.media = mediaAluno(Aluno.av1, Aluno.av2);
     	Aluno.status = status(Aluno.media);
-    	Aluno.getSobrenome();
-    	Aluno.getUltimoNome();
-    	Aluno.getNomeCompleto();  	
+    	 
+//    	String[] tokens = getNome().split(" ");
+//         Aluno.setNome(tokens[0]);
+//         
+//         for(int i = 1; i < tokens.length-1; i++) {
+//         	Aluno.setSobrenome(getSobrenome().append(tokens[i]).append(" "));
+//         }
+//         
+//        Aluno.setUltimoNome(tokens[tokens.length -1]);   
+//        Aluno.setNomeCompleto(getNomeCompleto().append(Aluno.getNome()).append(" ").append(Aluno.getSobrenome()).append(Aluno.getUltimoNome())); 	
     }
     
-
-	public static void setStatus(String status) {
-		Aluno.status = status;
-	}
-
-
 
 	public float mediaAluno(float nota1, float nota2) {
         return (nota1 + nota2) / 2;
@@ -38,11 +39,11 @@ public class Aluno extends Pessoa {
     
     public static String status(float aMedia) {   
         if(aMedia >= 4 && aMedia < 7) {
-            return status = "Prova final";           
+            return "Prova final";           
         }else if (aMedia >= 7) {
-            return status = "Aprovado";
+            return "Aprovado";
         }
-        return status = "Reprovado";
+        return "Reprovado";
     }
     
     @Override
@@ -50,13 +51,13 @@ public class Aluno extends Pessoa {
     	for (int i = 0; i <Constante.lista.size(); i++) {
 		    if(Constante.lista.get(i).getCargo() == "aluno") {
         	        
-	            System.out.println("Nome do aluno: " + Constante.lista.get(codigoConsulta).getNome() +    
-	            "\n Nota da AV1: " + Constante.lista.get(codigoConsulta).Aluno.getAv1() +      
-	            "\n Nota da AV2: " + Constante.lista[codigoConsulta].getAv2() +      
-	            "\n Media final: " + Constante.lista[codigoConsulta].getMedia() +        
-	            "\n Situacao: " + Constante.lista[codigoConsulta].getStatus() +                  
-	            "\n Identificacao: " +                 
-	            "\n  ");
+	            System.out.println("Nome do aluno: " + Constante.lista.get(codigoConsulta).getNome()    
+				               +"\n Nota da AV1: " + Constante.lista.get(codigoConsulta).Aluno.getAv1()
+				               +"\n Nota da AV2: " + Constante.lista[codigoConsulta].getAv2()
+				               +"\n Media final: " + Constante.lista[codigoConsulta].getMedia()        
+				               +"\n Situacao: " + Constante.lista[codigoConsulta].getStatus()                  
+				               +"\n Identificacao: "                 
+				               +"\n ");
 		    }
     	}
     }
@@ -64,7 +65,7 @@ public class Aluno extends Pessoa {
     
 @Override
 public String toString() {
-	return super.toString() +"Nota da avaliacao 1: " + av1 + "Nota da avaliacao 1: " + av2 +"Media final: " + media;
+	return super.toString() +"\nNota da avaliacao 1: " + av1 + "\nNota da avaliacao 2: " + av2 +"\nMedia final: " + media + "\nStatus: "+ status;
 }
    
 
