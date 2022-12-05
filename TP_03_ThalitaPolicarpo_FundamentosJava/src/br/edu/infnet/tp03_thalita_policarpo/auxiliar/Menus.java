@@ -42,7 +42,6 @@ public class Menus {
         System.out.println("Gostaria de realizar uma nova consulta?");
         System.out.println("[1] Sim");
         System.out.println("[2] Nao");
-        opcao = in.nextInt();
     }
     
     public static void informarCodigoInexistente() {

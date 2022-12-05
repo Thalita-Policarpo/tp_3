@@ -116,6 +116,7 @@ public class Aluno extends Pessoa {
     				System.out.println(aluno[codigoConsulta]);
     				
     				Menus.perguntarNovaConsulta();
+    				opcao = in.nextInt();
     				
     			}else {
     				Menus.informarCodigoInexistente();
@@ -224,10 +225,5 @@ public class Aluno extends Pessoa {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
-	
-	
-	
+ 
 }
