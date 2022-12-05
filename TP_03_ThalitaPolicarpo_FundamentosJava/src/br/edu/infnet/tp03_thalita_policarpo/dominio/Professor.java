@@ -1,75 +1,78 @@
 package br.edu.infnet.tp03_thalita_policarpo.dominio;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante;
+import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Menus;
 
-
-public class Professor extends Pessoa1 {
-	private Pessoa1 profs = new Pessoa1();
+public class Professor extends Pessoa {
+    private static Professor[] professor = new Professor[Constante.TAMANHO];
 	private static Scanner in = new Scanner(System.in);
-
+	private int opcao = 0;
+    private int codigoProfessor = 0;
+    private String materia;
+    private float salario;
+    private String mesContratacao;
 
 	
 	public Professor(){}
 	
-	@Override
-	public String toString() {
-		return super.toString() + materia + salario + mesContratacao;
-	}
+	
+	
+	
+	public Professor(StringBuilder nomeCompleto, String nome, StringBuilder sobreNome, String ultimoNome, String cargo,
+            int identificacao, int codigoProfessor, String materia, float salario, String mesContratacao) {
+        super(nomeCompleto, nome, sobreNome, ultimoNome, cargo, identificacao);
+        this.codigoProfessor = codigoProfessor;
+        this.materia = materia;
+        this.salario = salario;
+        this.mesContratacao = mesContratacao;
+    }
+
+
 	
 	@Override
-	public void exibirMenu() {
-		System.out.println("Menu Professores");
-		System.out.println("[1] Registrar professor;");
-		System.out.println("[2] Consultar professor;");
-		System.out.println("[3] Consultar todos os professores;");
-		System.out.println("[4] Voltar");
- 
-	}
-	
-	@Override
+    public String toString() {
+        return super.toString() 
+                +"\n Materia: " + materia
+                +"\n Salario: R$" + salario 
+                +"\n Mes de contratacao: " + mesContratacao;
+    }
+
+
+    @Override
 	public void registrar() {
+	    
+
 		try {			
-			if(codigoPessoa >= Constante.TAMANHO) {
+			if(codigoProfessor >= Constante.TAMANHO) {
 								
-				super.informarLimiteDeCadastro();
+				Menus.informarLimiteDeCadastro();
 				 
 			}else {
+			    professor[codigoProfessor] = new Professor();
+			   
 			    
-				profs.cargo= "professor";
-				profs.identificacao = codigoPessoa;
+			    professor[codigoProfessor].setCargo("Professor");
+			    professor[codigoProfessor].setIdentificacao(codigoProfessor);
 				in.nextLine();
 				
 				System.out.println("Informe o nome do professor:");
-				profs.nome = in.nextLine();
+				professor[codigoProfessor].setNome(in.nextLine());
 				
 				System.out.println("Informe o mes de contratacao:");
-				profs.mesContratacao = in.next();
+				professor[codigoProfessor].setMesContratacao(in.next());
 				
 				System.out.println("Informe o salario:");
-				profs.salario = in.nextFloat();
+				professor[codigoProfessor].setSalario(in.nextFloat());
 				
 				System.out.println("Informe a materia:");
-				profs.materia = in.next();
+				professor[codigoProfessor].setMateria(in.next());
 
 				System.out.println("Professor cadastrado com sucesso!");	
-				System.out.println("codigo de consulta: " + codigoPessoa + "\n");
+				System.out.println("codigo de consulta: " + codigoProfessor + "\n");
 				
-								
-				String[] tokens = Pessoa1.nome.split(" ");
-		        profs.nome = tokens[0];
-		        for(int i = 1; i < tokens.length-1; i++) {
-		        profs.sobreNome.append(tokens[i]).append(" ");
-		        }
-		        profs.ultimoNome = tokens[tokens.length -1];    
-		        profs.nomeCompleto.append(profs.nome).append(" ").append(profs.sobreNome).append(profs.ultimoNome);
-			
-				
-				pessoas[codigoPessoa] = profs;
-				
-				
-				codigoPessoa++;
+				codigoProfessor++;
 				
 			}
 		}catch(InputMismatchException exception) {
@@ -87,18 +90,13 @@ public class Professor extends Pessoa1 {
     			System.out.println("Informe o codigo de consulta:");
     			int codigoConsulta = in.nextInt();
     						
-    			if(pessoas[codigoConsulta].cargo == "professor" &&codigoConsulta >=0 && codigoConsulta < codigoPessoa ) {
-    				System.out.println("Nome do professor: " + pessoas[codigoConsulta].nomeCompleto);		
-    				System.out.println("Mes de contratacao: " + pessoas[codigoConsulta].mesContratacao);		
-    				System.out.println("Salario: R$" + pessoas[codigoConsulta].salario);		
-    				System.out.println("materia: " + pessoas[codigoConsulta].materia );	
-    				System.out.println("Identificacao: " +  pessoas[codigoConsulta].identificacao);
-    				System.out.println(" ");
+    			if("professor".equalsIgnoreCase(professor[codigoConsulta].getCargo()) && codigoConsulta >=0 && codigoConsulta < codigoProfessor ) {
+    			    System.out.println(professor[codigoConsulta]);
     				
-    				super.perguntarNovaConsulta();
+    				Menus.perguntarNovaConsulta();
     				
     			}else {
-    				super.informarCodigoInexistente();
+    				Menus.informarCodigoInexistente();
     			}
 		    }catch (NullPointerException exception1){
                 System.err.println("ainda nao ha professores cadastrados!");
@@ -110,14 +108,9 @@ public class Professor extends Pessoa1 {
 	@Override
 	public void consultarTodos() {
 	    try {
-    		for (int i = 0; i < codigoPessoa; i++) {
-    			if(pessoas[i].cargo == "professor") {
-    				System.out.println("Nome do profesor: " + pessoas[i].nomeCompleto);		
-    				System.out.println("Mes de contratacao: " + pessoas[i].mesContratacao);		
-    				System.out.println("Salario: R$ " + pessoas[i].salario);		
-    				System.out.println("Materia: " + pessoas[i].materia);
-    				System.out.println("Identificacao: " +  pessoas[i].identificacao);
-    				System.out.println(" ");
+    		for (int i = 0; i < codigoProfessor; i++) {
+    			if("professor".equalsIgnoreCase(professor[i].getCargo()) ) {
+    			    System.out.println(professor[i]);
     			}
     		}	
 	    }catch (NullPointerException exception2){
@@ -127,14 +120,14 @@ public class Professor extends Pessoa1 {
 	
 	@Override
 	public void executar() {
-			exibirMenu();
+			Menus.menuProfessor();
 			
 			System.out.println("Esolha uma opcao: ");
 			opcao = in.nextInt();
 
 			switch (opcao) {
 			case 1: 
-                        registrar();
+			    registrar();
                   
 				break;
 				
@@ -151,9 +144,82 @@ public class Professor extends Pessoa1 {
 				break;
 			
 			default:
-				opcaoInvalida();
+				Menus.opcaoInvalida();
 				break;				
 			}
 	}
 
+
+
+
+    public static Professor[] getProfessor() {
+        return professor;
+    }
+
+
+
+
+    public static void setProfessor(Professor[] professor) {
+        Professor.professor = professor;
+    }
+
+
+
+
+    public int getCodigoProfessor() {
+        return codigoProfessor;
+    }
+
+
+
+
+    public void setCodigoProfessor(int codigoProfessor) {
+        this.codigoProfessor = codigoProfessor;
+    }
+
+
+
+
+    public String getMateria() {
+        return materia;
+    }
+
+
+
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
+
+
+
+
+    public float getSalario() {
+        return salario;
+    }
+
+
+
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
+
+
+
+    public String getMesContratacao() {
+        return mesContratacao;
+    }
+
+
+
+
+    public void setMesContratacao(String mesContratacao) {
+        this.mesContratacao = mesContratacao;
+    }
+
+	
+	
+	
 }

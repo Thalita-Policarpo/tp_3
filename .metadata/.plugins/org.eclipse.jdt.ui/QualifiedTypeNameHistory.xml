@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="br.edu.infnet.tp03_thalita_policarpo.dominio.Pessoa"/>
+    <fullyQualifiedTypeName name="br.edu.infnet.tp03_thalita_policarpo.dominio.Aluno"/>
+    <fullyQualifiedTypeName name="br.edu.infnet.tp03_thalita_policarpo.auxiliar.Constante"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.io.EOFException"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="br.edu.infnet.app.auxiliar.Menus"/>
+    <fullyQualifiedTypeName name="br.edu.infnet.tp03_thalita_policarpo.auxiliar.Menus"/>
+</qualifiedTypeNameHistroy>

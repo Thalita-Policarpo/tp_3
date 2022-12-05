@@ -1,9 +1,10 @@
 package br.edu.infnet.tp03_thalita_policarpo.tps;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import  br.edu.infnet.tp03_thalita_policarpo.dominio.Pessoa1;
-import br.edu.infnet.tp03_thalita_policarpo.dominio.Professor;
+
+import br.edu.infnet.tp03_thalita_policarpo.auxiliar.Menus;
 import br.edu.infnet.tp03_thalita_policarpo.dominio.Aluno;
+import br.edu.infnet.tp03_thalita_policarpo.dominio.Professor;
 
 public class TP03 {
 	private static Scanner in = new Scanner(System.in);
@@ -12,30 +13,32 @@ public class TP03 {
 	
 
     public static void main(String[] args) {
+        Aluno aluno = new Aluno();
+        Professor professor = new Professor();
 			
 		do {
 		    try {
-				
-			        
-			        Pessoa1 pessoa = new Pessoa1();
-			        pessoa.exibirMenu();
+							        
+			        Menus.menuPrincipal();
 			        
 			        System.out.println("Esolha uma opcao: "); 
 			        opcao = in.nextInt();
 			        
     				switch (opcao) { 
     				case 1: 
-    					Aluno aluno = new Aluno();
     					aluno.executar();
     					break; 
     					
     				case 2: 
-    					Professor professor = new Professor();
     					professor.executar();
     					break;
     									
     				case 3: 
-    					Pessoa1.consultarAlunosProfessores();
+
+    			        aluno.consultarTodos();
+    			        
+    			        professor.consultarTodos(); 
+    			        
     					break;
     
     				case 4: 
